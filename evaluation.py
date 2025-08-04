@@ -32,7 +32,7 @@ from sklearn.model_selection import train_test_split
 
 os.environ["HF_DATASETS_CACHE"] = "None"
 
-login(token = "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",add_to_git_credential=True)
+login(token = "HF_TOKEN",add_to_git_credential=True)
 
 model_name_or_path = "openai/whisper-large-v3"
 
