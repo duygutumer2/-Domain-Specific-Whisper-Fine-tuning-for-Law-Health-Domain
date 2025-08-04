@@ -45,14 +45,17 @@ We use the [Common Voice 17.0](https://commonvoice.mozilla.org) dataset. The cla
 - Warm-up steps: `50`  
 - Scheduler: Linear
 
-## 📈 Results (Sample)
+## 📉 Sample Evaluation Results (WER Reductions)
 
-| Domain     | Strategy       | Max WER Reduction |
-|------------|----------------|--------------------|
-| Law        | Multilingual   | -7.14% (vi)        |
-| Healthcare | Monolingual    | -5.26% (ja)        |
+To demonstrate the effectiveness of domain-specific fine-tuning, we highlight two examples from different domains:
 
-Languages with ≥800 in-domain samples (e.g., en, fr, es, fa) benefit most from fine-tuning.
+| Language     | Domain     | Baseline WER | Fine-Tuned WER | Fine-Tuning     | Absolute ΔWER | Relative Δ (%) 
+|--------------|------------|--------------|----------------|------------------|---------------|----------------|
+| Vietnamese   | Law        | 21.43        | 14.29          | Multilingual     | 7.14          | 33.3%          |
+| Japanese     | Healthcare | 89.47        | 84.21          | Monolingual      | 5.26          | 5.9%           |
+
+> These results show that even modest domain supervision via LLM-labeled data can yield substantial ASR performance improvements—especially when in-domain sample count exceeds ~800.
+
 
 ## 📚 Citation
 
