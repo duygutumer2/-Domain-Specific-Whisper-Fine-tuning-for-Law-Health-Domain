@@ -26,3 +26,42 @@ We propose a scalable pipeline to fine-tune Whisper-large-v3 for domain-specific
 
 We use the [Common Voice 17.0](https://commonvoice.mozilla.org) dataset. The classification covers 22 languages (excluding Korean due to data scarcity):
 
+## 🧠 Models
+
+- **ASR Model:** [Whisper-large-v3](https://huggingface.co/openai/whisper-large-v3)  
+- **LLM Classifier:** [CohereForAI/aya-23-8B](https://huggingface.co/CohereForAI/aya-23-8B)
+
+## ⚙️ Training Details
+
+- **Framework:** PyTorch with Huggingface Transformers  
+- **Fine-tuning Method:** LoRA (8-bit quantized)  
+- **Hardware:** Single NVIDIA RTX 3060  
+- **Training Time:** ~7-8 hours per domain
+
+### LoRA Config
+
+- Learning rate: `1e-5`  
+- Batch size: `16`  
+- Warm-up steps: `50`  
+- Scheduler: Linear
+
+## 📈 Results (Sample)
+
+| Domain     | Strategy       | Max WER Reduction |
+|------------|----------------|--------------------|
+| Law        | Multilingual   | -7.14% (vi)        |
+| Healthcare | Monolingual    | -5.26% (ja)        |
+
+Languages with ≥800 in-domain samples (e.g., en, fr, es, fa) benefit most from fine-tuning.
+
+## 📚 Citation
+
+```bibtex
+@inproceedings{ulu2025multilingual,
+  title={Multilingual Domain Adaptation for Speech Recognition Using LLMs},
+  author={Ulu, Elif Nehir and Derya, Ece and Tümer, Duygu and Demirel, Berkan and Karamanlıoğlu, Alper},
+  booktitle={Text, Speech and Dialogue (TSD)},
+  year={2025}
+}
+
+
